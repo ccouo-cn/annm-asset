@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>开发合作 · 二次元技术空间</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+:root {
+    --primary-color: #e84393;
+    --secondary-color: #f78fb3;
+    --light-color: #fff0f7;
+    --dark-color: #b53471;
+    --text-color: #333;
+    --text-light: #666;
+}
+* { margin:0; padding:0; box-sizing: border-box;}
+body {
+    font-family: 'Noto Sans SC','Helvetica Neue',Arial,sans-serif;
+    background: var(--light-color);
+    color: var(--text-color);
+    transition: background-image 1s cubic-bezier(.8,0,.17,1);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+}
+.bg-fade {
+    transition: background-image 1s cubic-bezier(.8,0,.17,1);
+}
+
+.container { max-width:1200px; margin:0 auto; padding:0 20px;}
+header {
+    background: var(--primary-color); color:#fff; text-align: center;
+    padding: 3rem 0 2rem 0; border-radius:0; margin-bottom:0;
+    opacity:0; transform: translateY(-40px);
+    animation: fadeDownIn .8s .15s forwards cubic-bezier(.32,.67,.41,1.04);
+    position:relative;
+}
+.header-decor {
+    width:120px; height:auto; display:block; margin:auto; margin-bottom:1rem;
+    box-shadow:0 12px 24px rgba(232,67,147,0.06);
+    border-radius: 0;
+    opacity:0; animation:fadePop .75s 0.5s forwards;
+}
+@keyframes fadeDownIn { to { opacity:1; transform: translateY(0);}}
+.avatar-container{display:flex;justify-content:center;margin-bottom:1rem;}
+.avatar {
+    width:100px;height:100px;object-fit:cover;border:3px solid var(--secondary-color);
+    border-radius:0;background:white;
+    opacity:0; transform: scale(.8);
+    animation: fadePop .6s .3s forwards cubic-bezier(.32,.67,.41,1.04);
+}
+@keyframes fadePop{to{opacity:1;transform: scale(1);}}
+header h1 {font-size:2.3rem; margin-top:.7rem;}
+header p {font-size:1.1rem; color:#fff;}
+nav {background: var(--dark-color);padding:.8rem 0;opacity:0;animation:fadeNavIn 1s .45s forwards;}
+@keyframes fadeNavIn{to{opacity:1;}}
+nav ul {display:flex;justify-content:center;list-style:none;}
+nav ul li {margin:0 1.2rem;}
+nav ul li a {
+    color: #fff; text-decoration:none; font-weight:500;padding:.4rem 1rem; border-radius:0; transition:0.3s;
+}
+nav ul li a:hover { background: var(--primary-color); color:#fff;}
+.hero {
+    background: var(--primary-color);color: white;text-align:center;padding:2.2rem 0 1.5rem 0; margin-bottom:0;
+    opacity:0; transform: translateY(40px);
+    animation: fadeUpIn .8s .6s forwards cubic-bezier(.32,.67,.41,1.04);
+}
+@keyframes fadeUpIn {to {opacity:1; transform:translateY(0);}}
+.hero h2 {font-size:2.2rem;margin-bottom:.6rem;}
+.hero p {font-size:1.2rem;}
+.section-title {
+    text-align:center; font-size:2rem; color:var(--primary-color);
+    margin:2.2rem 0 2rem 0; display:block;position:relative;
+    opacity:0; transform:translateY(30px);
+    animation: fadeUpInSm .7s 1s forwards;
+}
+@keyframes fadeUpInSm {to {opacity:1;transform:translateY(0);}}
+.section-title::after{
+    content:''; display:block; width:30%;height:2px; margin:auto; background:var(--secondary-color);
+    transform:scaleX(0); transition:transform .2s; margin-top:.4rem;
+}
+.section-title:hover::after{transform:scaleX(1);}
+.tech-list{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:2.1rem;
+    margin-bottom:1.7rem;
+}
+.tech-card{
+    background:#fff;padding:0 .7rem 2.3rem .7rem;display:flex;flex-direction:column;align-items:center;
+    border:1px solid #ffe5f0;box-shadow:none;border-radius:0;transition:.23s;
+    position: relative;
+    opacity:0; transform:translateY(60px) scale(.94);
+    animation: techIn 1s forwards cubic-bezier(.81,-0.08,.47,1.49);
+}
+.tech-card:hover{box-shadow:0 15px 38px rgba(232,67,147,.09);transform:translateY(-7px) scale(1.02);}
+@keyframes techIn {
+    to{opacity:1;transform:translateY(0) scale(1);}
+}
+.tech-logo{
+    width:54px;height:54px;object-fit:contain; background:#fff; border-radius:0;
+    margin-top:2rem; margin-bottom:.5rem;
+    box-shadow:0 2px 8px rgba(240,140,180,.05);
+}
+.tech-anime-img{
+    width:110px;height:70px;object-fit:cover;margin-bottom:.7rem; border-radius:0;
+    box-shadow: 0 6px 26px rgba(200,80,150,.12);
+}
+.tech-moe-img{
+    width:90px;height:60px;object-fit:cover; margin-bottom:.8rem; margin-top:0.2rem;
+    border-radius:0; box-shadow:0 4px 18px rgba(232,67,147,0.11);
+}
+.tech-card h3{margin-bottom:.2rem;font-size:1.14rem; color:var(--primary-color);}
+.tech-card p{color:var(--text-light); font-size:.95rem;text-align:center;}
+.coop-section{
+    background: #fff; border:1px solid #ffe5f0;padding:1.5rem 1rem 1.1rem 1rem;margin:2rem 0 0 0;border-radius:0;text-align:center; max-width:740px;
+    margin-left:auto;margin-right:auto;
+    opacity:0;transform:translateY(20px);
+    animation: fadeUpIn .8s 1.2s forwards; position:relative;
+}
+.coop-decor{
+    width:100px; height:auto; display:block; margin: auto; margin-bottom:1rem; margin-top:-25px;
+    opacity:.8; border-radius:0;
+    box-shadow: 0 8px 20px rgba(232,67,147,0.08);
+}
+.contact-block {
+    background: white; border:1px solid #ffe5f0; padding:2.1rem 1.2rem;
+    max-width:650px; border-radius:0; color:#333;margin:auto; margin-top:2.6rem;
+    opacity:0;transform:translateY(20px);
+    animation: fadeUpIn .8s 1.5s forwards;
+    position:relative;
+}
+.contact-decor{
+    width:100px; height:auto; display:block; margin:auto; margin-bottom:1rem;
+    opacity:.7; border-radius:0; box-shadow: 0 5px 20px rgba(232,67,147,0.08);
+}
+.contact-block h3 {color:var(--primary-color); margin-bottom:1.2rem;}
+.contact-ways {display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:2.3rem;}
+.contact-way{display:flex;flex-direction:column;align-items:center;font-size:1.02rem; color: var(--dark-color);}
+.contact-way img{width:94px;height:94px; border:1px solid #fbb1d0; background:#fff;padding:3px; margin-bottom: .3rem; border-radius:0;}
+.contact-way span{word-break:break-all;}
+footer {
+    background: var(--primary-color); color: #fff; text-align:center; padding:1.3rem 0; margin-top:2.2rem; border-radius:0;
+    opacity:0; animation:fadeUpIn .8s 1.7s forwards;
+}
+@media (max-width: 800px) {
+    .container{padding:0 5px;}
+    .hero{padding:1.3rem 0;}
+    .section-title{font-size:1.18rem;}
+    .tech-list{grid-template-columns:1fr;}
+    .coop-section,.contact-block{padding:.7rem .3rem;}
+    .header-decor,.coop-decor,.contact-decor{width:65px;}
+}
+</style>
+</head>
+<body class="bg-fade">
+
+<header>
+    <div class="container">
+
+        <div class="avatar-container">
+            <img src="https://m.ccouo.top/api/yuzusoft.js?url=https://mmbiz.qpic.cn/mmbiz_jpg/VDCUoW3UiblKTicQNf0owGVT8v3du3n90cz4Pk9GkVoQoRicueJEpvFuibb9Rr3vn5vHnDgibjr8zVT7wph8jQNxnxibwbbLicQiasUR9XvUhiaJrdt0/640?wx_fmt=jpeg&watermark=1&tp=webp&wxfrom=5&wx_lazy=1#imgIndex=0" class="avatar" alt="动漫头像">
+        </div>
+        <h1>开发合作 · Ciallo～(∠・ω< )⌒☆</h1>
+        <p>专业后端开发与技术解决方案 · 动漫风格交流</p>
+    </div>
+</header>
+
+<nav>
+    <div class="container">
+        <ul>
+            <li><a href="#coop">关于合作</a></li>
+            <li><a href="#stack">技术栈</a></li>
+            <li><a href="#contact">联系我</a></li>
+        </ul>
+    </div>
+</nav>
+
+<section class="hero">
+    <div class="container">
+        <h2>承接开发/系统优化/合作共赢</h2>
+        <p>长期专注 PHP、Node.js、Golang、Java 项目交付与维护，期待与您共同成长！</p>
+    </div>
+</section>
+
+<section id="coop" class="coop-section">
+    <img src="https://m.ccouo.top/api/yuzusoft.js?url=https://mmbiz.qpic.cn/sz_mmbiz_jpg/VDCUoW3UiblIAib5zcvI5bN688SLaIHEI0gEUwHuW94EHXrU7awCNbTpy9exj9QmLLWzM0GtQzicBv0kFgBh9JD9ktZkKbzSdgNpTstlW3kicbI/640?wx_fmt=jpeg&watermark=1&tp=webp&wxfrom=5&wx_lazy=1#imgIndex=0" class="coop-decor" alt="合作区动漫贴图">
+    <h2 class="section-title">合作内容</h2>
+    <p>
+        擅长多语言后端项目开发、微服务、API、自动化、数据处理、电商/平台/支付/社交等方向。<br>
+        可提供1. 项目定制开发 2. 代码重构优化 3. 技术咨询顾问 4. 长期维护运维支持<br>
+        <b>承接长期/短期合作，保质靠谱，期待和你一起完成下一个充满想象力的项目！</b>
+    </p>
+</section>
+
+<section id="stack" class="container">
+    <h2 class="section-title">主力语言</h2>
+    <div class="tech-list">
+
+        <div class="tech-card" style="animation-delay:0.05s;">
+            <img src="https://m.ccouo.top/api/yuzusoft.js?url=https://mmbiz.qpic.cn/sz_mmbiz_jpg/VDCUoW3UiblLHnNqhMqhXtqhPicamj8p87wa2eUD6Bib0FpVZ4wSKZ6yLBeog7pyzJ7p8zMzGWo8z9TWgtSzgoLRDSmpFouM0xGzR8LZeic4ElY/640?wx_fmt=jpeg&watermark=1&tp=webp&wxfrom=5&wx_lazy=1#imgIndex=0" class="tech-logo" alt="php logo">
+            <h3>PHP</h3>
+            <p>高效快速的网站及接口开发，丰富项目实战经验，适用于内容系统、SaaS、多业务融合。</p>
+        </div>
+
+        <div class="tech-card" style="animation-delay:.17s;">
+            <img src="https://m.ccouo.top/api/yuzusoft.js?url=https://mmbiz.qpic.cn/mmbiz_jpg/VDCUoW3UiblLl7mD7k7agyUjE3yBvatLw8aTh8fnV5E0F69nWGibjS24icAfww5QsrbpIaaYSIk7pXbYh2g9VrJwTTcLUoNDjEETziaKAlSKHt0/640?wx_fmt=jpeg&watermark=1&tp=webp&wxfrom=5&wx_lazy=1#imgIndex=1" class="tech-logo" alt="node.js logo">
+            <h3>Node.js</h3>
+            <p>高并发实时服务、爬虫、数据处理、Socket通信、前后端一体化等场景。</p>
+        </div>
+
+        <div class="tech-card" style="animation-delay:.29s;">
+            <img src="https://m.ccouo.top/api/yuzusoft.js?url=https://mmbiz.qpic.cn/mmbiz_jpg/VDCUoW3UiblJ8RcgM2pqurUicuBsnaOj073nG22uGghEsCcsP5z9G8SXXj1PNHuwvib3Cuvic9lP9mGo1ibGqibzbBUX0UebUEXUFtia5MC1YkOhho/640?wx_fmt=jpeg&watermark=1&tp=webp&wxfrom=5&wx_lazy=1#imgIndex=2" class="tech-logo" alt="golang logo">
+            <h3>Golang</h3>
+            <p>高性能分布式、微服务开发、任务调度、工具服务等，稳定快速。</p>
+        </div>
+
+        <div class="tech-card" style="animation-delay:.41s;">
+            <img src="https://m.ccouo.top/api/yuzusoft.js?url=https://mmbiz.qpic.cn/sz_mmbiz_jpg/VDCUoW3UiblLicW4Hnv5Cae5MAJTFicA3vpJbdCAYaJovRCYKE7WZXLR2kbD7ziajEQm1ORcO1NQC98WV93kS3L7a3RVibUY3BCYAXcIAKUuXeVc/640?wx_fmt=jpeg&watermark=1&tp=webp&wxfrom=5&wx_lazy=1#imgIndex=3" class="tech-logo" alt="java logo">
+            <h3>Java</h3>
+            <p>大型项目、企业应用、后台管理系统，成熟安全，长期维护首选。</p>
+        </div>
+    </div>
+</section>
+
+<section id="contact" class="contact-block">
+    <img src="https://ccouo.cn/icon.png" class="contact-decor" alt="联系区动漫贴图">
+    <h3>联系我，开启合作之旅！</h3>
+    <div class="contact-ways">
+        <div class="contact-way">
+            <img src="https://ccouo.cn/i.png" alt="微信二维码">
+            微信
+        </div>
+
+        
+        <a href="https://qm.qq.com/q/C8av0A1YOY"
+           target="_blank"
+           class="contact-way"
+           style="text-decoration:none;color:inherit;">
+            <img src="https://ccouo.cn/io.jpg" alt="QQ二维码">
+            QQ
+        </a>
+
+        
+        <div class="contact-way">
+            <img src="https://ccouo.cn/d.jpg" alt="公众号">
+            <span>关注官方最新公众号动态</span>
+        </div>
+
+        <div class="contact-way">
+            <span style="font-size:2rem;">📧</span>
+            <span>邮箱：q2020770@outlook.com</span>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        &copy; 2024 技术空间 | 技术让合作更有趣
+    </div>
+</footer>
+
+<script>
+
+window.addEventListener('DOMContentLoaded', function() {
+    const techCards = document.querySelectorAll('.tech-card');
+    techCards.forEach((card, i) => {
+        card.style.opacity='1';
+        card.style.transform='translateY(0) scale(1)';
+    });
+});
+
+
+(function(){
+    var bgList = [
+        "https://m.ccouo.top/api/yuzusoft.js?url=https://mmbiz.qpic.cn/mmbiz_jpg/VDCUoW3UiblJ1MbfI8hP47zg9FicahxSBdCaDDia5cZvmt0nvc8Okob1DQjDRBpPu1iaCFyvfhzAmTEGtYCdBD2UGFPTEG6EhSLpE40icsmrEcIA/640?wx_fmt=jpeg&watermark=1&tp=webp&wxfrom=5&wx_lazy=1#imgIndex=1",
+        "https://m.ccouo.top/api/yuzusoft.js?url=https://mmbiz.qpic.cn/sz_mmbiz_jpg/VDCUoW3UiblIB35BySgdp18jfWXwq4oYeILa2G9IcB8ibHvsLPSKPJUf90HRCrdLdhCkWAzZF1B80icoRgFqURyiafD6lM7sHbU40QqWMvtSQLs/640?wx_fmt=jpeg&watermark=1&tp=webp&wxfrom=5&wx_lazy=1#imgIndex=2",
+        "https://m.ccouo.top/api/yuzusoft.js?url=https://mmbiz.qpic.cn/sz_mmbiz_jpg/VDCUoW3UiblLicFiaZJSZhO7BvzTiaf4aICXwSd1VrjD3woicvXn2ULrBYcRLTHiaotI1uV8HGsAeFIQUKv66ZVb0GyLeAaADrWX0QkwFosZxcPyU/640?wx_fmt=jpeg&watermark=1&tp=webp&wxfrom=5&wx_lazy=1#imgIndex=3",
+        "https://m.ccouo.top/api/yuzusoft.js?url=https://mmbiz.qpic.cn/sz_mmbiz_jpg/VDCUoW3UiblIncAaeNeEw6LiczZAl8GbaLGUjDC1iaabaYUbb1G4FiaD4KC9iaCOuZhCiaic5oylLcic4fLVGvVuhuSsXRZdqQXl216hj0HMiaj8yeoM/640?wx_fmt=jpeg&watermark=1&tp=webp&wxfrom=5&wx_lazy=1#imgIndex=4",
+        "https://m.ccouo.top/api/yuzusoft.js?url=https://mmbiz.qpic.cn/sz_mmbiz_jpg/VDCUoW3UiblJlffbFgTFhL9SxZkOIC22N3Yel7kziakjlIichKiaPIQJPyDtUau8EDic1r0qHFRdpI65uu76NzqtNoFoOicVpubuRrDqWHbmpThZY/640?wx_fmt=jpeg&watermark=1&tp=webp&wxfrom=5&wx_lazy=1#imgIndex=6",
+        "https://mmbiz.qpic.cn/sz_mmbiz_jpg/VDCUoW3UiblJc9EVcEeO7Ozk9FLialrysDmzNsCx32bybdFiaibUmbUzsUNLL6DSJR9e9MLPVyshoUXxYfXtmQZdvibMVmYvsd7JUqY6VrcoWRLA/640?wx_fmt=jpeg&watermark=1&tp=webp&wxfrom=5&wx_lazy=1#imgIndex=7",
+        "https://m.ccouo.top/api/yuzusoft.js?url=https://mmbiz.qpic.cn/mmbiz_jpg/VDCUoW3UiblLIdRib1Jic2fxPyZ7X4iaVonEbnpXR7UKx8NDTjeedBGd9Es6KVIleRzWYNEOEKjzspqFDZ3kplaN5WuQFMPDFqJq0Ujv7B4hkgI/640?wx_fmt=jpeg&watermark=1&tp=webp&wxfrom=5&wx_lazy=1#imgIndex=5"
+    ];
+
+    function setRandomBG(){
+        var idx = Math.floor(Math.random() * bgList.length);
+        document.body.style.backgroundImage = 'url(' + bgList[idx] + ')';
+    }
+
+    setRandomBG();
+    setInterval(setRandomBG, 5000);
+})();
+</script>
+</body>
+</html>
