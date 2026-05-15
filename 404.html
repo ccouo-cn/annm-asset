@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<title>404 - 页面未找到</title>
+
+<script
+  type="module"
+  src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"
+></script>
+
+<style>
+  html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background: #0a0a0a;
+    color: #fff;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI";
+    overflow: hidden;
+  }
+
+  model-viewer {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  .content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .code {
+    font-size: 96px;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+
+  .text {
+    font-size: 18px;
+    opacity: 0.8;
+    margin-bottom: 30px;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 12px 28px;
+    border-radius: 30px;
+    background: #fff;
+    color: #000;
+    text-decoration: none;
+    font-size: 16px;
+  }
+
+  /* 加载中 */
+  .loader {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0,0,0,0.95);
+    z-index: 10;
+  }
+
+  .bar {
+    width: 200px;
+    height: 6px;
+    background: #111;
+    margin-top: 12px;
+  }
+
+  .bar-inner {
+    height: 100%;
+    width: 0%;
+    background: #fff;
+    transition: width 0.2s;
+  }
+</style>
+</head>
+
+<body>
+
+<!-- 加载中 -->
+<div id="loader" class="loader">
+  加载中...
+  <div class="bar">
+    <div class="bar-inner"></div>
+  </div>
+</div>
+
+<!-- 404 内容 -->
+<div class="content">
+  <div class="code">404</div>
+  <div class="text">૮₍  ˶•⤙•˶ ₎ა 内容酱好像走丢啦，怎么办呀˵>ㅿ<˵</div>
+  <a href="/" class="btn">回到首页吧</a>
+</div>
+
+<!-- 背景 3D 模型 -->
+<model-viewer
+  id="mv"
+  src="https://hk.q2m3.top/b.glb"
+  camera-controls
+  interaction-prompt="none"
+>
+</model-viewer>
+
+<script>
+const mv = document.getElementById("mv");
+const loader = document.getElementById("loader");
+const bar = document.querySelector(".bar-inner");
+
+// 加载进度
+mv.addEventListener("progress", (e) => {
+  bar.style.width = `${e.detail.totalProgress * 100}%`;
+});
+
+// 加载完成
+mv.addEventListener("load", () => {
+  loader.style.display = "none";
+});
+
+// 加载失败
+mv.addEventListener("error", () => {
+  loader.innerHTML = "模型加载失败";
+});
+
+// iOS 陀螺仪授权
+document.body.addEventListener("click", async () => {
+  if (typeof DeviceOrientationEvent?.requestPermission === "function") {
+    try {
+      await DeviceOrientationEvent.requestPermission();
+    } catch {
+      console.warn("陀螺仪权限被拒绝");
+    }
+  }
+});
+
+// 陀螺仪控制相机
+window.addEventListener("deviceorientation", (e) => {
+  if (e.alpha == null || e.beta == null) return;
+
+  const theta = e.alpha;
+  const phi = Math.max(20, Math.min(160, 90 - e.beta));
+
+  mv.cameraOrbit = `${theta}deg ${phi}deg auto`;
+});
+</script>
+
+</body>
+</html>
