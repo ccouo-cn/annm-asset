@@ -1,8 +1,6 @@
-const express = require('express');
-const app = express();
-
-app.get('/', (req, res) => {
-  res.json({ msg: 'Hello from Vercel API' });
-});
-
-module.exports = app;
+module.exports = (req, res) => {
+  res.status(200).json({
+    ok: true,
+    msg: 'Vercel function alive'
+  });
+};
