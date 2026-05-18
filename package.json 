@@ -1,11 +1,7 @@
 {
-  "name": "vercel-backend",
-  "version": "1.0.0",
+  "name": "v",
   "private": true,
   "engines": {
     "node": "20.x"
-  },
-  "dependencies": {
-    "express": "^4.19.2"
   }
 }
